@@ -1,7 +1,7 @@
 def containsDuplicate(self, nums: list[int]) -> bool:
-    result = []
-
-    nums_set = set(nums)
-    if len(nums) == len(nums_set):
-        return False
-    return True
+    seen = {}
+    for num in nums:
+        if num in seen and seen[num] >= 1:
+            return True
+        seen[num] = seen.get(num, 0) + 1
+    return False
